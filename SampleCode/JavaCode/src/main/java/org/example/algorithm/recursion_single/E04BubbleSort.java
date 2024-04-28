@@ -1,5 +1,7 @@
 package org.example.algorithm.recursion_single;
 
+import java.util.Arrays;
+
 /**
  * 递归冒泡排序
  * <ul>
@@ -10,5 +12,39 @@ package org.example.algorithm.recursion_single;
  * </ul>
  */
 public class E04BubbleSort {
+    public static void sort(int[] a) {
+        bubble(a, a.length - 1);
+    }
+
+    /**
+     * <h3>递归函数 在范围 [0 .. j] 内冒泡最大元素到右侧</h3>
+     *
+     * @param a 数组
+     * @param j 未排序区域右边界
+     */
+    private static void bubble(int[] a, int j) {
+        if (j == 0) {
+            return;
+        }
+        int x = 0;
+        for (int i = 0; i < j; i++) {
+            if (a[i] > a[i + 1]) {
+                int t = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = t;
+                x = i;
+            }
+        }
+        bubble(a, x);
+    }
+
+    public static void main(String[] args) {
+        int[] a = {6, 5, 4, 3, 2, 1};
+        System.out.println(Arrays.toString(a));
+        bubble(a, a.length - 1);
+        System.out.println(Arrays.toString(a));
+    }
+
+
 
 }
